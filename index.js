@@ -10,24 +10,24 @@ function extraiLinks (texto) {
   }
   
  // const linksExtraidos = regex.exec(texto);
-  return arrayResultados;
+  return arrayResultados.length === 0 ? 'não há links': arrayResultados;
 }
 
 function trataErro(erro) {
-  throw new Error(chalk.red(erro.code, 'não ha arquivo no caminho'));
+  throw new Error(chalk.red(erro.code, 'não há arquivo no caminho'));
 }
 async function pegaArquivo(caminhoDoArquivo) {
   const encoding = 'utf-8';
   try {
     const texto = await fs.promises.readFile(caminhoDoArquivo, encoding)
-    console.log( extraiLinks(texto));
+    return extraiLinks(texto);
   } catch(erro) {
     trataErro(erro);
 //  } finally {
 //    console.log(chalk.yellow('operação concluída'));
   }
 }
-pegaArquivo('./arquivos/texto1.md');
+//pegaArquivo('./arquivos/texto1.md');
 //Outras formas:
 
 //function pegaArquivo(caminhoDoArquivo) {
@@ -50,3 +50,4 @@ pegaArquivo('./arquivos/texto1.md');
 //  })
 //}
 
+module.exports = pegaArquivo;
