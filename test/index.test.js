@@ -15,7 +15,10 @@ describe('pegaArquivo ::', () => {
     expect(resultado).toEqual(arrayResult)
   })
   it('deve retornar mensagem "não há links"', async() => {
-    const resultado = await pegaArquivo('/Users/ericadebem/Desktop/2299-lib-nodejs-markdown-aula-1/test/arquivos/texto1semlinks.md')
+   const resultado = await pegaArquivo('/Users/ericadebem/Desktop/2299-lib-nodejs-markdown-aula-1/test/arquivos/texto1semlinks.md')
     expect(resultado).toBe('não há links');
   })
+  it('deve lançar um erro na falta de arquivo', async () => {
+   await expect(pegaArquivo('/home/juliana/Documents/alura/lib-markdown/test/arquivos')).rejects.toThrow(/não há arquivo no caminho/)
+ })
 })
