@@ -1,5 +1,5 @@
-const pegaArquivo = require('../index')
+const pegaArquivo = require('../index');
 
-TextDecoderStream('adds 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3);
+test('deve ser uma função', () => {
+  expect(typeof pegaArquivo).toBe('function');
 });
